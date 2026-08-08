@@ -1,6 +1,6 @@
 import requests
 
-MODEL = "tinyllama"  # Fastest model
+MODEL = "tinyllama"
 OLLAMA_URL = "http://localhost:11434/api/generate"
 
 def call_llm(prompt: str) -> str:
