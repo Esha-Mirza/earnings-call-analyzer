@@ -21,7 +21,7 @@ with st.sidebar:
     
     if st.button("📋 Load Sample"):
         try:
-            with open("data/sample_transcript.txt", "r") as f:
+            with open("data/data/sample_transcript.txt", "r") as f:
                 st.session_state["sample_text"] = f.read()
             st.success("✅ Sample loaded!")
         except:
@@ -40,7 +40,7 @@ if st.button("🔍 Analyze", type="primary"):
                 response = requests.post(
                     "http://localhost:8000/analyze/",
                     data={"text": text},
-                    timeout=60
+                    timeout=300
                 )
                 
                 if response.status_code == 200:
