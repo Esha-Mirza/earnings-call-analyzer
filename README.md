@@ -1,79 +1,219 @@
-# Earnings Call Analyzer
+<div align="center">
 
-An AI-powered earnings call analyzer that extracts summaries, sentiment, and key financial insights from quarterly earnings call transcripts for FinScope Capital.
+<h1 align="center">FinIntel-AI</h1>
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Ollama](https://img.shields.io/badge/LLM-Ollama-black)
+### AI-Powered Financial Intelligence from Earnings Calls
 
----
+**Transform corporate earnings calls into actionable financial insights with AI-powered summarization, sentiment analysis, and intelligent extraction of key business signals.**
 
-## Table of Contents
+<p>
+  <img src="https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Mistral-LLM-orange?style=for-the-badge" alt="Mistral">
+  <img src="https://img.shields.io/badge/Ollama-Local%20AI-black?style=for-the-badge" alt="Ollama">
+  <img src="https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">
+  <img src="https://img.shields.io/badge/Streamlit-Frontend-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit">
+  <img src="https://img.shields.io/badge/FinTech-AI-1F6FEB?style=for-the-badge" alt="FinTech AI">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License">
+</p>
 
-- [Overview](#overview)
-- [Features](#features)
-- [Technology Stack](#technology-stack)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Sample Data](#sample-data)
-- [Running the Application](#running-the-application)
-- [Usage](#usage)
-- [Sample Input](#sample-input-short)
-- [Sample Output](#sample-output)
-- [API Endpoints](#api-endpoints)
-- [Project Structure](#project-structure)
-- [Configuration](#configuration)
-- [Troubleshooting](#troubleshooting)
-- [Roadmap](#roadmap)
-- [License](#license)
-- [Disclaimer](#disclaimer)
-- [Acknowledgments](#acknowledgments)
-- [Contact](#contact)
+</div>
 
 ---
 
 ## Overview
 
-This application helps investment research firms and financial analysts quickly analyze earnings call transcripts. It automatically generates concise summaries, classifies overall sentiment, and extracts key financial insights including revenue trends, growth signals, risk warnings, and forward guidance.
+**FinIntel AI** is an AI-powered financial intelligence system designed to analyze corporate earnings call transcripts and transform lengthy financial discussions into concise, structured insights.
 
-The application runs entirely locally, ensuring data privacy and eliminating API costs. It uses Ollama to host the Mistral model, FastAPI for the backend API, and Streamlit for the user interface.
+Earnings calls contain valuable information about company performance, management sentiment, future guidance, strategic priorities, business risks, and growth expectations. However, manually reviewing lengthy transcripts can be time-consuming for investors, analysts, and financial researchers.
+
+FinIntel AI simplifies this process by using a locally hosted **Mistral** language model through **Ollama** to analyze earnings call transcripts and surface the information that matters most.
+
+The system combines **local LLM inference**, **FastAPI**, and **Streamlit** to provide an end-to-end financial analysis workflow while keeping transcript processing within the local environment.
 
 ---
 
-## Features
+## Why FinIntel AI?
 
-- **Earnings Call Summary** — Generates concise 3-sentence summaries of calls
-- **Sentiment Classification** — Overall Positive / Neutral / Negative sentiment
-- **Financial Insights** — Extracts revenue trends, growth signals, risks, and guidance
-- **Analyst Q&A Support** — Handles CEO/CFO commentary and analyst questions
-- **Export Ready** — Download analysis results for research reports
-- **Privacy-Focused** — All processing happens locally, no data is sent to external servers
-- **No API Costs** — Free to use with no usage limits
+Corporate earnings calls provide insights that may not be immediately visible from financial statements alone.
+
+Management commentary can reveal:
+
+* Business performance
+* Revenue and growth trends
+* Future guidance
+* Strategic priorities
+* Operational challenges
+* Management confidence
+* Business risks
+* Analyst concerns
+* Forward-looking expectations
+
+FinIntel AI converts this unstructured information into a structured analysis, allowing users to understand the overall direction and tone of an earnings call more efficiently.
+
+---
+
+## Key Features
+
+### AI-Powered Earnings Analysis
+
+Uses a local large language model to understand and analyze corporate earnings call transcripts.
+
+### Intelligent Summarization
+
+Produces concise summaries that highlight the most important points discussed during the earnings call.
+
+### Sentiment Analysis
+
+Analyzes the overall tone of the earnings call and classifies it as:
+
+* Positive
+* Neutral
+* Negative
+
+### Financial Insight Extraction
+
+Surfaces important business and financial signals, including:
+
+* Revenue trends
+* Growth indicators
+* Business performance
+* Risks
+* Forward guidance
+* Strategic initiatives
+* Management commentary
+
+### Analyst Q&A Analysis
+
+Analyzes analyst questions and management responses to identify concerns, expectations, and important topics discussed during the call.
+
+### Local LLM Inference
+
+Uses **Ollama** to run Mistral locally, reducing dependency on external AI APIs.
+
+### Privacy-Focused Architecture
+
+Earnings call transcripts can be processed locally without requiring them to be sent to third-party AI providers.
+
+### API-Driven Backend
+
+A FastAPI backend separates the analysis engine from the user interface, making the system easier to integrate with other applications.
+
+### Interactive Interface
+
+A Streamlit frontend provides a simple interface for submitting transcripts and viewing structured financial analysis.
+
+---
+
+## How It Works
+
+```text
+                    Earnings Call Transcript
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │    Streamlit UI   │
+                    │     Frontend      │
+                    └─────────┬─────────┘
+                              │
+                              │ HTTP Request
+                              ▼
+                    ┌───────────────────┐
+                    │      FastAPI      │
+                    │      Backend      │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │      Ollama       │
+                    │   Local Runtime   │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │      Mistral      │
+                    │      Local LLM    │
+                    └─────────┬─────────┘
+                              │
+              ┌───────────────┼────────────────┐
+              ▼               ▼                ▼
+         Summary         Sentiment       Financial Insights
+              │               │                │
+              └───────────────┼────────────────┘
+                              ▼
+                    Structured Analysis
+```
+
+---
+
+## Analysis Workflow
+
+FinIntel AI follows a simple financial intelligence pipeline:
+
+1. The user provides an earnings call transcript.
+2. The Streamlit frontend sends the transcript to the FastAPI backend.
+3. The backend prepares the transcript for analysis.
+4. Ollama passes the request to the locally hosted Mistral model.
+5. Mistral analyzes the transcript.
+6. FinIntel AI extracts the key financial information.
+7. The system generates a structured response containing:
+
+   * Summary
+   * Sentiment
+   * Financial insights
+8. The results are presented through the Streamlit interface.
 
 ---
 
 ## Technology Stack
 
-| Technology | Purpose |
-|---|---|
-| **Mistral** | Large Language Model for financial text analysis |
-| **Ollama** | Local LLM hosting and inference |
-| **FastAPI** | Backend API framework |
-| **Streamlit** | Frontend user interface |
-| **Requests** | HTTP client for API communication |
-| **Uvicorn** | ASGI server for FastAPI |
+| Technology | Purpose                                          |
+| ---------- | ------------------------------------------------ |
+| Python     | Core application development                     |
+| Mistral    | Large language model for financial text analysis |
+| Ollama     | Local LLM inference                              |
+| FastAPI    | Backend API framework                            |
+| Uvicorn    | ASGI server                                      |
+| Streamlit  | Interactive frontend                             |
+| Requests   | HTTP communication                               |
 
 ---
 
-## Prerequisites
+## Project Structure
 
-| Requirement | Details |
-|---|---|
-| **Python** | Version 3.8 or higher |
-| **Ollama** | Installed and running |
-| **Mistral Model** | Downloaded via Ollama |
-| **RAM** | 8GB+ recommended |
-| **Storage** | 5GB+ free space for model |
+```text
+finintel-ai/
+│
+├── agents/
+│
+├── backend/
+│   └── main.py
+│
+├── data/
+│   └── data/
+│       └── tesla_q4_2024.txt
+│
+├── frontend/
+│   └── app.py
+│
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+Make sure the following are installed:
+
+* Python 3.8+
+* Git
+* Ollama
+* Mistral model
+* 8 GB+ RAM recommended
+* Sufficient storage for local model inference
 
 ---
 
@@ -82,16 +222,24 @@ The application runs entirely locally, ensuring data privacy and eliminating API
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Esha-Mirza/School_Of_AI_Internship.git
-cd School_Of_AI_Internship/"Project-9 Earnings Call Summarizer"
+git clone https://github.com/Esha-Mirza/earnings-call-analyzer.git
+cd earnings-call-analyzer
 ```
 
-### 2. Create Virtual Environment
+### 2. Create a Virtual Environment
+
+#### Windows
 
 ```bash
 python -m venv venv
-venv\Scripts\activate        # Windows
-# source venv/bin/activate   # Mac/Linux
+venv\Scripts\activate
+```
+
+#### macOS / Linux
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
 ```
 
 ### 3. Install Dependencies
@@ -100,114 +248,168 @@ venv\Scripts\activate        # Windows
 pip install -r requirements.txt
 ```
 
-### 4. Pull Mistral Model via Ollama
+---
+
+## Configure Ollama
+
+Install Ollama and download the Mistral model:
 
 ```bash
 ollama pull mistral
 ```
 
-This downloads the Mistral model (~4.1 GB). Alternatively, you can use a smaller model:
-
-```bash
-ollama pull phi3        # 2.2 GB, faster inference
-ollama pull gemma:2b    # 1.4 GB, lightest option
-```
-
----
-
-## Sample Data
-
-The project includes a sample transcript in `data/tesla_q4_2024.txt`:
-
-```text
-TESLA Q4 2024 EARNINGS CALL TRANSCRIPT
-Date: January 29, 2025
-
-[CEO - Elon Musk]: Good afternoon everyone. I'm pleased to report that we had a strong quarter with a 12% increase in vehicle deliveries compared to Q4 2023. We delivered a record 495,000 vehicles globally.
-
-[CFO - Vaibhav Taneja]: Total revenue reached $25.7 billion, representing a 7% year-over-year growth. Operating income remained stable at $2.1 billion. We are investing heavily in AI-driven logistics.
-
-[Analyst - John Smith]: Could you clarify how inflation is affecting your capital expenditures?
-
-[CEO - Elon Musk]: We're maintaining our capital expenditure guidance of $9-10 billion for 2025. We expect vehicle deliveries to grow by 20-25% in 2025.
-```
-
----
-
-## Running the Application
-
-**Terminal 1: Start Ollama Service**
+Start the Ollama service if it is not already running:
 
 ```bash
 ollama serve
 ```
 
-**Terminal 2: Start Backend (FastAPI)**
+Verify that the model is available:
+
+```bash
+ollama list
+```
+
+You should see `mistral` in the list of installed models.
+
+---
+
+## Run FinIntel AI
+
+FinIntel AI consists of three components:
+
+* Ollama
+* FastAPI backend
+* Streamlit frontend
+
+### Start the Backend
+
+Open a terminal and run:
 
 ```bash
 uvicorn backend.main:app --reload
 ```
 
-The backend will be available at: `http://localhost:8000`
+The FastAPI server will be available at:
 
-**Terminal 3: Start Frontend (Streamlit)**
+```text
+http://localhost:8000
+```
+
+### Start the Frontend
+
+Open another terminal and run:
 
 ```bash
 streamlit run frontend/app.py
 ```
 
-The frontend will open at: `http://localhost:8501`
+The Streamlit interface will be available at:
+
+```text
+http://localhost:8501
+```
+
+Open the Streamlit URL in your browser to begin analyzing earnings calls.
 
 ---
 
 ## Usage
 
-1. Open your browser and navigate to `http://localhost:8501`
-2. Paste an earnings call transcript in the text area or load the sample
-3. Click the **Analyze** button
-4. View the results:
-   - **Summary** — 3-sentence call overview
-   - **Sentiment** — Positive / Neutral / Negative with color coding
-   - **Key Insights** — Revenue trends, growth signals, risks, guidance
+### Step 1 — Open the Application
+
+Navigate to:
+
+```text
+http://localhost:8501
+```
+
+### Step 2 — Provide an Earnings Call Transcript
+
+Paste an earnings call transcript into the application.
+
+### Step 3 — Submit for Analysis
+
+FinIntel AI sends the transcript to the FastAPI backend for local AI processing.
+
+### Step 4 — Review the Results
+
+The system generates structured financial insights including:
+
+* Earnings call summary
+* Overall sentiment
+* Key financial insights
+* Business performance signals
+* Management commentary
+* Forward-looking information
 
 ---
 
-## Sample Input (Short)
+## Example
+
+### Input
 
 ```text
 [CEO]: We had a strong quarter with a 12% increase in revenue.
-[Analyst]: Any concerns about the future?
-[CEO]: We are optimistic about 2025 and expect continued growth.
+
+[Analyst]: Can you discuss your expectations for the coming year?
+
+[CEO]: We remain optimistic about 2025 and expect continued growth across our core business segments.
+
+[CFO]: We are also focused on improving operating efficiency while maintaining investments in long-term growth initiatives.
+```
+
+### Generated Analysis
+
+#### Summary
+
+The company reported a strong quarter with 12% revenue growth. Management expressed optimism about continued growth in 2025 while emphasizing operational efficiency and continued investment in long-term growth initiatives.
+
+#### Sentiment
+
+**Positive**
+
+#### Financial Insights
+
+```text
+Revenue & Growth:
+Revenue increased by 12%.
+
+Forward Guidance:
+Management expects continued growth in 2025.
+
+Operational Strategy:
+The company is focused on improving operating efficiency.
+
+Strategic Direction:
+Management plans to continue investing in long-term growth initiatives.
 ```
 
 ---
 
-## Sample Output
+## Included Sample Data
 
-**Summary:**
-
-```text
-The company reported a strong quarter with 12% revenue growth. Management expressed optimism about 2025 and expects continued growth. The tone was positive throughout the call.
-```
-
-**Sentiment:** Positive (Green)
-
-**Key Insights:**
+The repository includes a sample Tesla earnings call transcript:
 
 ```text
-Revenue and Growth: 12% revenue increase
-Forward Guidance: Optimistic about 2025 with expected continued growth
-Risks: No significant risks mentioned
-Strategic Initiatives: Focus on sustained growth
+data/data/tesla_q4_2024.txt
 ```
+
+This sample can be used to test the analysis workflow and explore how FinIntel AI processes real-world earnings call content.
 
 ---
 
-## API Endpoints
+## API
 
-### `POST /analyze/`
+FinIntel AI exposes its analysis functionality through FastAPI.
 
-**Request:**
+### Analyze Earnings Call
+
+```http
+POST /analyze/
+```
+
+### Request
 
 ```json
 {
@@ -215,102 +417,211 @@ Strategic Initiatives: Focus on sustained growth
 }
 ```
 
-**Response:**
+### Response
 
 ```json
 {
-  "summary": "3-sentence summary...",
+  "summary": "Earnings call summary...",
   "sentiment": "Positive",
   "insights": "Key financial insights..."
 }
 ```
 
----
-
-## Project Structure
-
-```
-Project-9 Earnings Call Summarizer/
-├── backend/
-│   └── main.py          # FastAPI implementation
-├── frontend/
-│   └── app.py           # Streamlit UI
-├── data/
-│   └── tesla_q4_2024.txt
-├── requirements.txt     # Python dependencies
-└── README.md            # Project documentation
-```
+The API-based architecture makes it possible to integrate the financial analysis engine into dashboards, research platforms, internal tools, or other applications.
 
 ---
 
 ## Configuration
 
-### Changing the Model
+### Change the LLM
 
-To use a different model, modify `backend/main.py`:
+The model used by FinIntel AI can be configured in the backend.
+
+For example:
 
 ```python
-MODEL = "phi3"        # Change from "mistral" to your preferred model
+MODEL = "mistral"
 ```
 
-### Changing the Port
+Other Ollama-compatible models can be used depending on the available hardware and desired performance.
 
-**Backend Port** (default: 8000):
+For example:
 
 ```bash
-uvicorn backend.main:app --reload --port 8001
+ollama pull phi3
 ```
 
-**Frontend Port** (default: 8501):
+or:
 
 ```bash
-streamlit run frontend/app.py --server.port 8502
+ollama pull gemma:2b
 ```
+
+Then update the configured model accordingly.
 
 ---
 
-## Troubleshooting
+## Local AI Architecture
 
-| Issue | Solution |
-|---|---|
-| Model not found | Run `ollama pull mistral` to download the model |
-| Connection refused | Ensure Ollama is running (`ollama serve`) |
-| Port already in use | Use `--port` flag to specify a different port |
-| Module not found | Run `pip install -r requirements.txt` |
-| Slow inference | Switch to a smaller model like `phi3` or `gemma:2b` |
+FinIntel AI is designed around local inference rather than mandatory cloud-based AI services.
+
+The processing flow is:
+
+```text
+Earnings Call
+      │
+      ▼
+FastAPI
+      │
+      ▼
+Ollama
+      │
+      ▼
+Mistral
+      │
+      ▼
+Financial Analysis
+```
+
+This architecture provides:
+
+* Local transcript processing
+* No mandatory external LLM API
+* Reduced dependence on cloud AI services
+* No per-request cloud inference costs
+* Greater control over financial data processing
+
+> Local inference does not guarantee complete security. Appropriate security practices should still be followed when handling confidential or proprietary financial information.
+
+---
+
+## Use Cases
+
+FinIntel AI can support a variety of financial research workflows:
+
+* Earnings call analysis
+* Equity research
+* Investment research
+* Financial sentiment analysis
+* Corporate performance analysis
+* Management commentary analysis
+* Earnings season monitoring
+* Financial NLP experimentation
+* FinTech AI development
+* Automated financial research
 
 ---
 
 ## Roadmap
 
-- [ ] Add multi-quarter trend comparison (QoQ / YoY insight tracking)
-- [ ] Add speaker-level breakdown (separate CEO vs CFO vs analyst sentiment)
-- [ ] Add PDF transcript upload support instead of pasted text only
+* [ ] PDF transcript upload
+* [ ] Automatic earnings transcript ingestion
+* [ ] Company and ticker recognition
+* [ ] Quarter-over-quarter comparison
+* [ ] Year-over-year comparison
+* [ ] Financial metric extraction
+* [ ] Management tone analysis
+* [ ] Analyst question categorization
+* [ ] Forward guidance tracking
+* [ ] Risk factor detection
+* [ ] Management confidence scoring
+* [ ] Historical earnings comparison
+* [ ] Multi-company earnings comparison
+* [ ] Interactive financial dashboards
+* [ ] PDF report generation
+* [ ] CSV export
+* [ ] Additional local LLM support
 
 ---
 
-## License
+## Performance Considerations
 
-This project is open source and available under the [MIT License](LICENSE).
+Local LLM inference performance depends on the hardware available on the machine.
+
+For improved performance:
+
+* Use a machine with sufficient RAM.
+* Enable GPU acceleration when supported.
+* Use an appropriate model size for the available hardware.
+* Avoid unnecessarily large transcript inputs.
+* Consider smaller models when faster inference is preferred.
+
+---
+
+## Troubleshooting
+
+### Ollama Connection Error
+
+Make sure Ollama is running:
+
+```bash
+ollama serve
+```
+
+### Mistral Model Not Found
+
+Download the model:
+
+```bash
+ollama pull mistral
+```
+
+### Backend Connection Error
+
+Make sure the FastAPI backend is running:
+
+```bash
+uvicorn backend.main:app --reload
+```
+
+### Missing Dependencies
+
+Reinstall the project dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Slow AI Responses
+
+Local model performance depends on available hardware. Consider using a smaller Ollama model if inference is too slow.
 
 ---
 
 ## Disclaimer
 
-**Educational/Prototype Use Only** — This tool is for research and demonstration purposes. It does not constitute financial advice, and its output should not be used as the sole basis for investment decisions. Always consult a qualified financial professional.
+FinIntel AI is intended for **educational, research, and analytical purposes**.
+
+AI-generated financial insights should not be considered investment advice, financial advice, or a recommendation to buy or sell any security.
+
+Users should independently verify financial information and consult qualified financial professionals when making investment decisions.
+
 
 ---
 
 ## Acknowledgments
 
-- [Ollama](https://ollama.com/) - Local LLM runtime
-- Mistral AI - Mistral model
-- FastAPI - Web framework
-- Streamlit - UI framework
+Built with:
+
+* Python
+* Mistral
+* Ollama
+* FastAPI
+* Streamlit
 
 ---
 
-## Contact
+## Author
 
-- **GitHub:** [Esha-Mirza](https://github.com/Esha-Mirza)
-- **Email:** esha101374@gmail.com
+**Esha Mirza**
+
+**GitHub:** [Esha-Mirza](https://github.com/Esha-Mirza)
+
+
+---
+
+<div align="center">
+
+**FinIntel AI — Turning Earnings Calls into Financial Intelligence.**
+
+</div>
